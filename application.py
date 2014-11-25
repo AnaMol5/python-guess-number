@@ -1,54 +1,45 @@
-#-*-coding: utf-8-*-
+#!-*- coding: utf-8-*-
+"""Este Juego Adivina un numero aleatorio"""
 import random
-
-intentos = 0
-error=0
-x = random.randint (1, 51)
-nombre = raw_input("Ingrese su nombre")
-print ""
-print "¡Hola!" + nombre +" Bienvenido al Juego Adivina el Número" 
-
-
+INTENTOS = 0
+ERROR = 0
+ALEATORIO = random.randint(1, 51)
+NOMBRE = raw_input("Ingrese su nombre")
+print " "
+print "¡Hola!" + NOMBRE +"Bienvenido al Juego Adivina el Número"
 print "INSTRUCCIONES:"
 print ""
-print "En Este Juego debes adivinar un número del 1 al 50, tendrás únicamente 8 intentos para encontrar el número"
-print ""
-while intentos < 8:
-    intentos = intentos + 1
+print """En Este Juego debes adivinar un número del 1 al 50,
+tendrás únicamente 8 intentos para encontrar el número"""
+print " "
+
+while INTENTOS < 8:
+    INTENTOS = INTENTOS + 1
     print "Elige un número"
-    numero = raw_input()
-
-
-    try: 
-        numero = int(numero)
-        #error=1
-        
-    except:
-
-        print "solo puedes ingresar números"
-        print ""
-        #error=0
-
-       
- 
-        intentos = intentos + 1 
-    
-    if numero >50 or numero <1:
-            print "Ingreso Incorrecto"
+    NUMERO = raw_input()
+    try:
+        NUMERO = int(NUMERO)
+        ERROR = 1
+    except ValueError:
+        print "solo puedes ingresar números."
+        print " "
+        ERROR = 0
+        INTENTOS = INTENTOS +1
+    if NUMERO > 50 or NUMERO < 1:
+        print  "intentalo de nuevo"
+        print " "
+    if ERROR == 1:
+        if NUMERO < ALEATORIO: 
+            print "Tu número es mas bajon\nintentalo de nuevo\n"
             print ""
-    
-    if error ==1:
-        if numero < x:
-            print "Tu número es mas bajo"
-            print ""
-        if numero > x:
-            print "Tu número es mas alto"
-            print ""
-        if numero == x:
+        if NUMERO > ALEATORIO:
+            print "Tu número es mas alto\nintentalo de nuevo\n"
+            print " "
+        if NUMERO == ALEATORIO:
             break
 
-if numero == x:
-    print "¡FELICIDADES! ¡ADIVINASTE, HAZ GANADO!"
-        
-if numero != x:
-    print "¡LO SIENTO, EL JUEGO HA TERMINADO!"
+if NUMERO == ALEATORIO:
+    print "Correcto. Usted gana."
+if NUMERO != ALEATORIO:
+    print "incorrecto\n Juego Terminado."
+ 
